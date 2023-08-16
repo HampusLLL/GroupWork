@@ -1,0 +1,215 @@
+﻿body {
+    margin-top: 0;
+    align-content: center;
+    height: 100vh;
+}
+
+h1{
+    margin: 2rem;
+}
+
+.container{
+    background-color: #1b1b1b;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    color: white;
+}
+
+.myPage {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 5px;
+    background-color: #202020;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+#fakeLogin button{
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+.userInput{
+    width: 80%;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.userInput li{
+    display: grid;
+    grid-template:
+    "a b";
+}
+
+.userInput li label{
+    margin: 1rem;
+    width: 170px;
+    margin-top: auto;
+    font-size: 20px;
+    text-align: right;
+}
+
+.userInput li p{
+    margin: 1rem;
+    width: 326px;
+    margin-top: auto;
+    font-size: 20px;
+    text-align: left;
+}
+
+#text{
+    padding-right: 1rem;
+}
+
+#editProfile{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+}
+
+#goal button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 15%;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+}
+
+#goal .selected{
+    background-color: rgb(27, 27, 27);
+}
+
+#graphButton{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+}
+
+main form{
+    padding-bottom: 6px;
+}
+
+#profileImg{
+    width: 200px;
+}
+
+.firstLogon{
+    width: 80%;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.firstLogon li{
+    display: grid;
+    grid-template:
+    "a b";
+}
+
+.firstLogon li label{
+    margin: 1rem;
+    width: 248px;
+    margin-top: auto;
+    font-size: 20px;
+    text-align: right;
+}
+
+.firstLogon li div, p{
+    margin: 1rem;
+    width: 248px;
+    margin-top: auto;
+    font-size: 15px;
+    text-align: left;
+}
+
+#gender{
+    width: 248px;
+}
+
+.firstLogon li div input, select{
+    width: 206px;
+    border: 1px solid #ccc;
+    color: white;
+    background-color: #1b1b1bbe;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#submitButton, #previousButton{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 20%;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+}
+
+@media  (max-width: 1000px) {
+    .container{
+        width: 100%;
+    }
+    .myPage{
+        width: 100%;
+    }
+    }
+@media (max-width: 700px){
+    .imgDiv img{
+        width: 100%;
+    }
+    .firstLogon li{
+        display: block;
+    }
+    .firstLogon li div, p{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #submitButton, #previousButton{
+        width: 40%;
+    }
+    .userInput li{
+        display: block;
+    }
+    .userInput li label{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .userInput li p{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #goal button{
+        width: 30%;
+    }
+    #graphButton, #editProfile{
+        width: 50%;
+    }
+}

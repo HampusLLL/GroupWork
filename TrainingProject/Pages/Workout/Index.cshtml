@@ -1,0 +1,79 @@
+﻿@page 
+@model TrainingProject.Pages.Workout.IndexModel
+@{
+
+}
+
+<link rel="stylesheet" href="~/css/site.css">
+<link rel="stylesheet" href="~/css/Workout.css">
+
+<div class="container">
+    <div id="myWorkouts">
+        <h2>My Workouts</h2>
+        <table class="exerciseInfo">
+            <thead>
+                <tr>
+                    <th>Workout name</th>
+                    <th>Show</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            @foreach (var workout in Model.MyWorkouts)
+            {
+                <tr id="existingWorkout">
+                    <td>@workout.Name</td>
+                    <td>
+                        <form>
+                            <button asp-page="Show" asp-route-id="@workout.Id">Show workout</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button asp-page="Edit" asp-route-id="@workout.Id">Edit Workout</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <button type="submit">Delete Workout</button>
+                            <input type="hidden" value="@workout.Id" name="Id">
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <form>
+            <button id="createWorkout" asp-page="Edit">Create Workout</button>
+        </form>
+    </div>
+
+    <div id="othersWorkouts">
+        <h2>Others Workouts</h2>
+        <table id="othersTable">
+            <thead>
+                <tr>
+                    <th>Workout name</th>
+                    <th>Creator</th>
+                    <td>Rating</td>
+                    <th>Show workout</th>
+                </tr>
+            </thead>
+
+            @foreach (var workout in Model.Workouts)
+            {
+                //TODO change links to buttons
+                <tr id="existingWorkout">
+                    <td>@workout.Name</td>
+                    <td>@workout.Owner.Name</td>
+                    <td>@(workout.GetAvrageRating()+(double.TryParse(workout.GetAvrageRating(),out var temp)?"/5":""))</td>
+                    <td>
+                        <form>
+                            <button asp-page="Show" asp-route-id="@workout.Id">Show workout</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

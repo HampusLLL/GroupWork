@@ -1,0 +1,108 @@
+﻿@page "{id:int?}"
+@using TrainingProject.Models;
+@model TrainingProject.Pages.Workout.EditModel
+@{
+
+}
+
+<link rel="stylesheet" href="~/css/site.css">
+<link rel="stylesheet" href="~/css/Workout.css">
+
+
+<form method="post" asp-page-handler="changeName">
+    <input name="newName" type="text" asp-for="@Model.SelectedWorkout.Name" />
+    <button type="submit">Change name</button>
+    <input type="hidden" name="muscleGroup" value="@Model.SelectedMucleGroup">
+</form>
+
+<form method="post" asp-page-handler="changeAccessLevel">
+    <select name="newAccessLevel" onchange="this.form.submit()" asp-for="@Model.SelectedWorkout.AccessLevel" asp-items="@(Html.GetEnumSelectList<AccessLevel>())">
+    </select>
+    <input type="hidden" name="muscleGroup" value="@Model.SelectedMucleGroup">
+</form>
+
+<h2>Exercises in workout</h2>
+<table class="createdWorkoutTables">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Muscle Group</th>
+            <th>Description</th>
+            <th>Intensity</th>
+            <th>Remove Button</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var workoutExercise in Model.SelectedWorkout.WorkoutExecises)
+        {
+            <tr>
+                <td><a class="underline" href="@workoutExercise.Exercise.Instruction">@workoutExercise.Exercise.Name</a></td>
+                <td>@workoutExercise.Exercise.MuscleGroup</td>
+                <td>@workoutExercise.Exercise.Description</td>
+                <td>
+                    <form method="post" asp-page-handler="change">
+                        <select name="intesnity" onchange="this.form.submit()" asp-for="@workoutExercise.Intensity" asp-items="@(Html.GetEnumSelectList<InetensityLevel>())">
+                        </select>
+                        <input type="hidden" value="@workoutExercise.Id" name="workoutExerciseId">
+                        <input type="hidden" name="muscleGroup" value="@Model.SelectedMucleGroup">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="delete">
+                        <input type="hidden" name="exersieId" value="@workoutExercise.Id">
+                        <input type="hidden" name="muscleGroup" value="@Model.SelectedMucleGroup">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<h2>Exercises to choose from</h2>
+<table class="createWorkoutTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>
+                <form method="post" asp-page-handler="Filter">
+                    <select name="MuscleGroup" onchange="this.form.submit()" asp-for="@Model.SelectedMucleGroup" asp-items="@(Html.GetEnumSelectList<MuscleGroup>())">
+                    </select>
+                </form>
+            </th>
+            <th>Description</th>
+            <th>Intensity</th>
+            <th>Add button</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exersie in Model.Exercises)
+        {
+            <form method="post">
+
+            <tr>
+                <td><a class="underline" href="@exersie.Instruction">@exersie.Name</a></td>
+                <td>@exersie.MuscleGroup</td>
+                <td>@exersie.Description</td>
+                <td>
+                    <select name="intesnity">
+                        <option value="3">High</option>
+                        <option value="2">Medium</option>
+                        <option value="1">Low</option>
+                    </select>
+                    <input type="hidden" name="muscleGroup" value="@Model.SelectedMucleGroup">
+                </td>
+                <td>
+                    <input type="hidden" value="@exersie.Id" name="exersieId">
+                    <button type="submit">add to workout</button>
+                </td>
+            </tr>
+
+            </form>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,160 @@
+﻿body {
+
+}
+
+#Result {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Smooch Sans';
+    padding: 20px;
+    margin: 10px;
+}
+
+#ResultValues {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 0px;
+    margin: 0px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    background-color: #656565;
+    padding: 1rem;
+}
+
+#ResultValues ul {
+    display:inline-flex;
+    flex-flow:row;
+    text-align: center;
+    padding: 0;
+}
+
+#ResultValues li {
+    display: inline-flex;
+    flex-flow:row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #656565;
+    width: 100%;
+    padding: 10px;
+}
+#Graph {
+    display:flex;
+    align-content:center;
+    justify-content:center;
+}
+
+
+svg {
+    display: inline-block;
+    align-content:center;
+    background-color: white;
+    border: solid 5px black;
+    padding: 0px;
+}
+
+.graph {
+    font-size: 30px;
+    
+}
+
+
+.graph .labels.x-labels {
+    font-size: 18px;   
+    font-family: 'Smooch Sans', sans-serif;
+}
+
+.graph .labels.y-labels {
+    font-size: 18px;
+    font-family: 'Smooch Sans';
+}
+
+.currentDataPoint {
+    stroke-width: 1;
+    fill: blue;
+}
+
+
+.graph .grid {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+    /*stroke-width: 1;*/
+}
+
+.labels {
+    font-size: 10px;
+}
+
+.label-title {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    fill: black;
+}
+
+.data {
+    fill: red;
+    stroke-width: 1;
+}
+
+.dataPoints {
+    fill: #000000ca;
+}
+
+
+@media (min-width: 1000px) {
+    .graph {
+        height: 80%;
+        width: 80%;
+    }
+
+
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 100%;
+    }
+
+    #myPage {
+        width: 100%;
+    }
+
+    .graph {
+        height:350%;
+        width:350%;
+    }
+
+    #userInfo {
+        display: block;
+        
+    }
+
+        #userInfo p {
+            text-align: center;
+        }
+
+   /*ul {
+      width: 50%;
+   }*/
+    li {
+        font-size: 50%;
+    }
+}
+
+@media (max-width:500px) {
+    .graph {
+        height: 500%;
+        width: 500%;
+    }
+}

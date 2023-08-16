@@ -1,0 +1,92 @@
+﻿@page
+@using TrainingProject.Pages.Shared.Components.LoginMenu;
+@model TrainingProject.Pages.MyPage.Profile.IndexModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/site.css">
+<link rel="stylesheet" href="~/css/MyPage.css">
+<script src="~/js/MyPage.js" defer></script>
+
+<div class="container">
+
+    <div class="myPage">
+
+        <div class="userInfo">
+            <div class="imgDiv">
+                <img class="profileImg" src="@Url.Content("~/Pictures/Sample-Profile-Pic.png")" />
+            </div>
+
+            <h2>Enter your Details</h2>
+
+            <form method="post">
+
+                <ul class="firstLogon">
+                    <li>
+                        <label id="userNameLabel" for="userName">Name: </label>
+                        <p id="userName">@Model.User.Name</p>
+                    </li>
+
+                    <li>
+                        <label for="gender">Gender:</label>
+                        <div>
+                            <select asp-for="@Model.User.IsMale" id="gender" name="gender">
+                                <option value="true">Male</option>
+                                <option value="false">Female</option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li>
+                        <label for="age">Age:</label>
+                        <div>
+                            <input asp-for="@Model.User.Age" id="age" type="number" name="age" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <label for="height">Height in cm:</label>
+                        <div>
+                            <input asp-for="@Model.User.Height" id="height" type="number" name="height" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <label for="weight">Weight in kg:</label>
+                        <div>
+                            <input asp-for="@Model.User.CurrentWeight" id="weight" type="number" name="weight" />
+                        </div>
+                    </li>
+
+                </ul>
+                
+                <button id="submitButton" type="submit">Submit</button>
+                
+                <button id="previousButton" asp-page="/MyPage/Index">Previous Page</button>
+                
+
+            </form>
+            @*            TODO fix felhantering
+            *@
+            @*
+            @if(!Model.User.IsValid()){
+            <script>
+            alert('the underweight BMI category. Please enter new values!');
+            var loc = window.location;
+            window.location = loc.protocol + '//' + loc.host + loc.pathname + loc.search;
+            </script>
+            }
+            @if (Model.calorieCount.FinishedBMR == "0")
+            {
+            <script>
+            alert('For an individual of your height, your goal weight would put you in the underweight BMI category. Please enter new values!');
+            var loc = window.location;
+            window.location = loc.protocol + '//' + loc.host + loc.pathname + loc.search;
+            </script>
+            }
+            *@
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@page "{id:int}"
+@model TrainingProject.Pages.Workout.ShowModel
+@using TrainingProject.Models;
+@{
+}
+
+
+@section Scripts{
+
+    <script src="~/js/hashtagIntegration.js" defer type="module"></script>
+}
+
+<link rel="stylesheet" href="~/css/socialMediaStyle.css" />
+<link rel="stylesheet" href="~/css/viewWorkout.css" />
+
+
+<p hidden id="mostCommonGroup">@Model.SelectedWorkout.MostCommonMucleGroup</p>
+
+<form method="post" asp-page-handler="change">
+    <select name="ratingEnum" onchange="this.form.submit()" asp-for="@Model.Rating" asp-items="@(Html.GetEnumSelectList<RatingEnum>())">
+    </select>
+</form>
+<p>The avrage rating is: @Model.SelectedWorkout.GetAvrageRating()</p>
+
+
+<table class="createdWorkoutTables">
+    <thead>
+        <tr>
+            <th>Name / Instruction link</th>
+            <th>Muscle Group</th>
+            <th>Description</th>
+            <th>Intensity</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var workoutExercise in Model.SelectedWorkout.WorkoutExecises)
+        {
+            <tr>
+                <td><a class="underline" href="@workoutExercise.Exercise.Instruction">@workoutExercise.Exercise.Name</a> </td>
+                <td>@workoutExercise.Exercise.MuscleGroup</td>
+                <td>@workoutExercise.Exercise.Description</td>
+                <td>@workoutExercise.Intensity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<aside id="socialMedia">
+    <p>Most popular post in #@Model.SelectedWorkout.MostCommonMucleGroup</p>
+</aside>
+
